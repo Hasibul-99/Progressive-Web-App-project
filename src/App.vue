@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang= "scss">
 body {
   margin: 0;
 }
@@ -51,4 +51,5 @@ header span {
   box-sizing: border-box;
   padding-top: 16px;
 }
+
 </style>
