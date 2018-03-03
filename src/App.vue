@@ -1,24 +1,47 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+      <span>PWA VueJs</span>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
+      <div class="wrapper">
+        <div class="books">
+           <book v-for="list in lists" :key="list.imageUrl" :list="list"></book>
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
+// import json data
+
+import data from './db.json';
+import Book from './components/Books'
+
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      lists: []
+    }
+  },
+  created() {
+    this.lists = data;
+  },
+  components: {
+    Book
+  }
 }
 </script>
 
-<style lang= "scss">
+<style>
 body {
   margin: 0;
+}
+
+.wrapper {
+  height: 50px;
 }
 
 #app {
@@ -52,4 +75,31 @@ header span {
   padding-top: 16px;
 }
 
+.books {
+   column-count: 1;
+  column-gap: 1em;
+}
+.wrapper {
+  padding: 15px;
+}
+@media only screen and (min-width: 500px) {
+  .books {
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .books {
+    column-count: 3;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .books {
+    column-count: 4;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .books {
+    column-count: 5;
+  }
+}
 </style>
